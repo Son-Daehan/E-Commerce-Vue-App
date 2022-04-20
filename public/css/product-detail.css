@@ -1,0 +1,78 @@
+/* CSS Document */
+
+#product-detail-wrapper {
+	display: grid;
+	grid-template-columns: 70% 30%;
+	grid-gap: 2em;
+	grid-auto-rows: auto;
+	margin-left: 150px;
+	margin-right: 150px;
+	margin-top: 130px;
+	margin-bottom: 300px;
+	text-align: center;
+
+}
+
+.wrapper>div {
+	background: #eee;
+	padding: 1em;
+}
+
+#productDetailNested {
+	display: grid;
+	grid-template-rows: 20% 50% 10% 10% 10%;
+	text-align: left;
+}
+
+#productDetailImage {
+	width: 300px;
+	height: 350px;
+}
+
+#productStyle {
+	text-align: left;
+	font-family: 'Raleway', sans-serif;
+}
+
+#individualProductTitle {
+	font-size: 40px;
+}
+
+#productButton {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr)
+}
+
+.dropdown-menu {
+	font-size: 13px;
+	text-align: center;
+
+}
+
+.product-button {
+	width: 180px;
+	height: 38px;
+}
+
+.dropdown {
+	width: 120px;
+}
+
+.container {
+	margin-top: 50px;
+	margin-left: 50px;
+}
+
+button.qty-change {
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	background: #fff;
+	border: 1px solid #e3e3e3;
+}
+
+.qty-input {
+	height: 30px;
+	width: 80px;
+	text-align: center;
+}

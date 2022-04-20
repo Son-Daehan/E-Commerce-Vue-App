@@ -1,0 +1,20 @@
+/* CUSTOM STYLE */
+
+
+
+/* JUMBOTRON */
+.jumbotron {
+	padding-top: 100px;
+	padding-bottom: 224px;
+}
+
+#jumbo-text {
+	text-align: center;
+}
+
+/* CAROUSEL STYLE */
+.carousel {
+	min-width: 960px;
+	margin: 0 auto;
+	margin-top: 0px;
+}
