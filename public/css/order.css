@@ -1,0 +1,27 @@
+/* CSS Document */
+
+.wrapper>div {
+    background: #eee;
+    padding: 1em;
+}
+
+#orderNested {
+    display: grid;
+    text-align: middle;
+    grid-template-columns: 50% 50%;
+    row-gap: 1em;
+}
+
+.order-title {
+    margin-top: 50px;
+    text-align: middle;
+}
+
+#orderWrapper {
+    display: grid;
+    margin-right: 350px;
+    margin-top: 50px;
+    margin-bottom: 285px;
+    margin-left: 350px;
+    text-align: center;
+}

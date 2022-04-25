@@ -11,3 +11,106 @@
 #form-header {
 	text-align: center;
 }
+
+
+/* ADDRESS STYLING */
+#addressGrid {
+	display: grid;
+	margin-right: 250px;
+	margin-left: 250px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+
+}
+
+#addressNestedGrid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.wrapper>div {
+	background: #eee;
+	padding: 1em;
+}
+
+#addressStyling {
+	margin-right: auto;
+}
+
+#addressEditStyling {
+	margin-left: auto;
+}
+
+/* ADDRESS DETAIL STYLING */
+#addressDetailGrid {
+	display: grid;
+	margin-right: 250px;
+	margin-left: 250px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+
+}
+
+#addressDetailNestedGrid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.wrapper>div {
+	background: #eee;
+	padding: 1em;
+}
+
+#addressDetailStyling {
+	margin-right: auto;
+}
+
+#addressDetailEditStyling {
+	margin-left: auto;
+}
+
+
+/* ORDER HISTORY STYLING */
+#orderHistoryGrid {
+	display: grid;
+	margin-right: 150px;
+	margin-left: 150px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	grid-gap: 1em;
+
+}
+
+#orderNestedGrid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+#orderHistoryHeader {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+}
+
+#orderHistoryHeader2 {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	margin-bottom: 10px;
+}
+
+#orderHistorySupport {
+	text-align: right;
+}
+
+/* PROFILE STYLING */
+#profileGrid {
+	display: grid;
+	margin-right: 250px;
+	margin-left: 250px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+#profileNestedGrid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}

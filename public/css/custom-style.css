@@ -18,3 +18,7 @@
 	margin: 0 auto;
 	margin-top: 0px;
 }
+
+#navbarHeader {
+	gap: 1em;
+}

@@ -1,0 +1,10 @@
+#profileNavbar {
+    display: grid;
+    align-self: center;
+}
+
+#profileNested {
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(4, 1fr);
+}

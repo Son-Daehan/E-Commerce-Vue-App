@@ -2,20 +2,8 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="/">E-Commerce</a>
-
-      <form class="form-inline my-2 my-lg-0">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </form>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto" id="navbarHeader">
           <li class="nav-item active">
             <a class="nav-link" href="/"
               >Home <span class="sr-only">(current)</span></a
@@ -43,8 +31,16 @@
               <a class="dropdown-item" href="#">Category 3</a>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Account</a>
+          <li class="nav-item" v-if="isLoggedIn()">
+            >
+            <a class="nav-link" href="/profile">Account</a>
+          </li>
+          <li class="nav-item" v-if="isNotLoggedIn()">
+            >
+            <a class="nav-link" href="/login">Log-In</a>
+          </li>
+          <li class="nav-item" v-if="isLoggedIn()">
+            <a class="nav-link" href="/cart">Cart</a>
           </li>
           <li class="nav-item" v-if="isLoggedIn()">
             <a class="nav-link" href="/login" v-on:click="logOut">Log Out</a>
@@ -90,6 +86,13 @@ export default {
         return true;
       } else {
         return false;
+      }
+    },
+    isNotLoggedIn: function () {
+      if (localStorage.getItem("jwt")) {
+        return false;
+      } else {
+        return true;
       }
     },
     logOut: function () {

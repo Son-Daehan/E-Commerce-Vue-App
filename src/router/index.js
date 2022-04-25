@@ -5,6 +5,15 @@ import ProductView from '../views/ProductView.vue'
 import LoginView from '../views/LoginView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import ProductDetailView from '../views/ProductDetailView.vue'
+import CartView from '../views/CartView.vue'
+import CheckoutView from '../views/CheckoutView.vue'
+import OrderView from '../views/OrderView.vue'
+import ProfileView from '../views/ProfileView.vue'
+import AddressView from '../views/AddressView.vue'
+import AddressEditView from '../views/AddressEditView.vue'
+import AccountInfoView from '../views/AccountInfoView.vue'
+import BillingView from '../views/BillingView.vue'
+import OrderHistoryView from '../views/OrderHistoryView.vue'
 
 
 const routes = [
@@ -37,6 +46,51 @@ const routes = [
     path: '/products/:id',
     name: 'singleProduct',
     component: ProductDetailView
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: CartView
+  },
+  {
+    path: '/checkout',
+    name: 'checkout',
+    component: CheckoutView
+  },
+  {
+    path: '/order/:id',
+    name: 'order',
+    component: OrderView
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfileView
+  },
+  {
+    path: '/profile/addresses',
+    name: 'addresses',
+    component: AddressView
+  },
+  {
+    path: '/profile/addresses/:id',
+    name: 'address-edit',
+    component: AddressEditView
+  },
+  {
+    path: '/profile/billing',
+    name: 'billing',
+    component: BillingView
+  },
+  {
+    path: '/profile/order-history',
+    name: 'order-history',
+    component: OrderHistoryView
+  },
+  {
+    path: '/profile/account-information',
+    name: 'account-information',
+    component: AccountInfoView
   }
 ]
 

@@ -51,7 +51,9 @@
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
       <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+        <li class="text-danger" v-for="error in errors" v-bind:key="error">
+          {{ error }}
+        </li>
       </ul>
     </form>
   </div>

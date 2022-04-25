@@ -1,0 +1,49 @@
+/* CSS Document */
+
+#cartWrapper {
+    display: grid;
+    grid-gap: 2em;
+    grid-auto-rows: 250px;
+    margin-left: 80px;
+    margin-right: 20px;
+    grid-template-rows: auto;
+}
+
+.wrapper>div {
+    background: #eee;
+    padding: 1em;
+}
+
+#cartNested {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    text-align: left;
+}
+
+#product-image {
+    width: 200px;
+    height: 170px;
+}
+
+.cart-title {
+    margin-top: 50px;
+    margin-left: 80px;
+    text-align: left;
+}
+
+#cartNestedFurther {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    margin-left: 100px;
+}
+
+#wholeWrapper {
+    display: grid;
+    grid-gap: 2em;
+    margin-right: 80px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    grid-gap: 2em;
+    grid-template-columns: 70% 30%;
+
+}
