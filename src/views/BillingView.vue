@@ -1,8 +1,8 @@
 <template>
   <div class="profile">
-    <nav class="navbar">
+    <nav class="navbar-custom">
       <div id="profileNavbar">
-        <ul id="profileNested">
+        <ul class="list-unstyled" id="profileNavbarNested">
           <li class="nav-item active">
             <a class="nav-link" href="/profile"
               >Account Information <span class="sr-only">(current)</span></a

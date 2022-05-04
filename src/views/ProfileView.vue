@@ -1,8 +1,8 @@
 <template>
   <div class="profile">
-    <nav class="navbar">
+    <nav class="navbar-custom">
       <div id="profileNavbar">
-        <ul id="profileNested">
+        <ul class="list-unstyled" id="profileNavbarNested">
           <li class="nav-item active">
             <a class="nav-link" href="/profile"
               >Account Information <span class="sr-only">(current)</span></a
@@ -22,33 +22,41 @@
     </nav>
 
     <div v-if="!isEditing" class="wrapper" id="profileGrid">
-      <div>
+      <div class="profileCard">
         <div id="profileNestedGrid">
           <div>
             <div>{{ user.name }}</div>
+            <div>{{ user.phone_number }}</div>
             <div>{{ user.email }}</div>
-            <div>{{ user.password_digest }}</div>
           </div>
-          <button v-on:click="toggleToItemEditForm">Edit</button>
+          <button class="btnProfile" v-on:click="toggleToItemEditForm">
+            Edit
+          </button>
         </div>
       </div>
     </div>
-    <form v-else class="wrapper" id="profileGrid">
+    <form v-else class="wrapper profileCard" id="profileEditGrid">
       <div>
-        <div id="profileNestedGrid">
-          <div>
-            <form v-on:submit.prevent="updateUser(user)">
-              Name: <input type="text" v-model="user.name" /> Email:
-              <input type="text" v-model="user.email" /> Password:
-              <input type="text" v-model="user.password" /> Password
-              Confirmation:
-              <input type="text" v-model="user.password_confirmation" />
-              <input type="submit" Value="Submit" />
-            </form>
+        <form v-on:submit.prevent="updateUser(user)">
+          <div id="profileEditNestedGrid">
+            <div>Name:</div>
+            <input type="text" v-model="user.name" />
+            <div>Email:</div>
+            <input type="text" v-model="user.email" />
+            <div>Phone Number:</div>
+            <input type="text" v-model="user.phone_number" />
+
+            <div>Password:</div>
+            <input type="text" v-model="user.password" />
+            <div>Password Confirmation:</div>
+            <input type="text" v-model="user.password_confirmation" /> <br />
           </div>
-          <button v-on:click="toggleToItemEditForm">Cancel</button>
-        </div>
+          <input class="btnEditProfile" type="submit" Value="Submit" />
+        </form>
       </div>
+      <button class="btnEditProfile" v-on:click="toggleToItemEditForm">
+        Cancel
+      </button>
     </form>
   </div>
 </template>
@@ -77,6 +85,7 @@ export default {
       var params = {
         name: user.name,
         email: user.email,
+        phone_number: user.phone_number,
         password: user.password,
         password_confirmation: user.password_confirmation,
       };

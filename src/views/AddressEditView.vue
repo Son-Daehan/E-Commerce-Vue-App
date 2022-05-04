@@ -1,8 +1,8 @@
 <template>
   <div class="profile">
-    <nav class="navbar">
+    <nav class="navbar-custom">
       <div id="profileNavbar">
-        <ul id="profileNested">
+        <ul class="list-unstyled" id="profileNavbarNested">
           <li class="nav-item active">
             <a class="nav-link" href="/profile"
               >Account Information <span class="sr-only">(current)</span></a
@@ -22,28 +22,41 @@
     </nav>
 
     <div class="wrapper" id="addressDetailGrid">
-      <div id="addressDetailNestedGrid">
+      <!-- <div id="addressDetailNestedGrid"> -->
+      <div class="addressUpdateCard">
         <form v-on:submit.prevent="updateAddress(address)">
-          Street Name: <input type="text" v-model="address.street_name" /> City:
-          <input type="text" v-model="address.city" /> Region:
-          <input type="text" v-model="address.region" /> Postal Code:
-          <input type="text" v-model="address.postal_code" />
-          <input type="submit" Value="Submit" />
+          <div>
+            Street Name: <br />
+            <input type="text" v-model="address.street_name" />
+          </div>
+          <div>
+            City: <br />
+            <input type="text" v-model="address.city" />
+          </div>
+          <div>
+            Region: <br />
+            <input type="text" v-model="address.region" />
+          </div>
+          <div>
+            Postal Code: <br />
+            <input type="text" v-model="address.postal_code" />
+          </div>
+          <div>
+            <input class="btnAddress" type="submit" Value="Submit" />
+            <button v-on:click="destroyAddress(address)" class="btnAddress">
+              Delete
+            </button>
+            <router-link
+              v-bind:to="{
+                name: 'addresses',
+              }"
+              class="btnAddress"
+              >Cancel</router-link
+            >
+          </div>
         </form>
-        <button
-          v-on:click="destroyAddress(address)"
-          id="addressDetailEditStyling"
-        >
-          Delete
-        </button>
-        <router-link
-          v-bind:to="{
-            name: 'addresses',
-          }"
-          id="addressDetailEditStyling"
-          >Cancel</router-link
-        >
       </div>
+      <!-- </div> -->
     </div>
   </div>
 </template>

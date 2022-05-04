@@ -5,48 +5,66 @@
     </div>
     <div v-if="!isEmpty" class="wrapper" id="wholeWrapper">
       <div class="wrapper" id="cartWrapper">
-        <div v-for="(carted, index) in cartedProducts" :key="index">
+        <div
+          class="cardCarted"
+          v-for="(carted, index) in cartedProducts"
+          :key="index"
+        >
           <div class="nested" id="cartNested">
             <router-link
-              v-bind:to="{ name: 'singleProduct', params: { id: index + 1 } }"
+              v-bind:to="{
+                name: 'singleProduct',
+                params: { id: carted.product.id },
+              }"
             >
               <img
-                v-bind:src="carted.product.url"
+                v-bind:src="carted.product.image"
                 id="product-image"
-                v-bind:alt="carted.product.name"
+                v-bind:alt="carted.product.title"
               />
             </router-link>
+
             <div id="cartNestedFurther">
               <div>
                 <router-link
                   v-bind:to="{
                     name: 'singleProduct',
-                    params: { id: index + 1 },
+                    params: { id: carted.product.id },
                   }"
-                  >{{ carted.product.name }}</router-link
+                  >{{ carted.product.title }}</router-link
                 >
               </div>
               <div>{{ carted.product.description }}</div>
+            </div>
+            <div class="computedDetail">
               <div>Quantity: {{ carted.quantity }}</div>
               <div>Price: ${{ carted.product.price }}</div>
+              <button class="button" v-on:click="destroyCartedProduct(carted)">
+                Delete
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <div>
+      <div class="cardCartedTwo">
         <div
           v-for="(carted, index) in cartedProducts.slice(0, 1)"
           v-bind:key="index"
         >
           <div>
             Subtotal: ${{ carted.subtotal }}
-            <router-link to="/checkout"> Checkout </router-link>
+            <button class="button">
+              <router-link to="/checkout"> Checkout </router-link>
+            </button>
           </div>
         </div>
       </div>
     </div>
     <div v-else id="emptyCartGrid">
-      <div>THIS IS AN EMPTY CART, PLEASE ADD PRODUCTS TO PROCEED.</div>
+      <div class="emptyCart">Shopping cart is empty.</div>
+      <router-link class="emptyCart" v-bind:to="{ name: 'products' }"
+        >Continue Shopping</router-link
+      >
     </div>
   </div>
 </template>
@@ -65,6 +83,15 @@ export default {
       this.cartedProducts = response.data;
       console.log(this.cartedProducts);
     });
+  },
+
+  methods: {
+    destroyCartedProduct: function (carted) {
+      axios.delete("/api/carted_products/" + carted.id).then((response) => {
+        console.log("Carted product has been destroyed", response);
+        this.$router.go();
+      });
+    },
   },
 
   computed: {

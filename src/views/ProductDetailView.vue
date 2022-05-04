@@ -1,11 +1,15 @@
 <template>
   <div class="singleProduct">
     <div class="wrapper" id="product-detail-wrapper">
-      <div>
-        <img :src="product.url" id="productDetailImage" alt="Random Image" />
+      <div class="cardImage">
+        <img
+          :src="product.image_url"
+          id="productDetailImage"
+          v-bind:alt="product.title"
+        />
       </div>
-      <div class="productStyle" id="productDetailNested">
-        <div id="individualProductTitle">{{ product.name }}</div>
+      <div class="productStyle cardDetail" id="productDetailNested">
+        <div id="individualProductTitle">{{ product.title }}</div>
         <div>{{ product.description }}</div>
         <div>$ {{ product.price }}</div>
         <div class="qty-changer">

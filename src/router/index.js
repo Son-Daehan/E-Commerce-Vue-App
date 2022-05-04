@@ -10,6 +10,7 @@ import CheckoutView from '../views/CheckoutView.vue'
 import OrderView from '../views/OrderView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import AddressView from '../views/AddressView.vue'
+import AddressNewView from '../views/AddressNewView.vue'
 import AddressEditView from '../views/AddressEditView.vue'
 import AccountInfoView from '../views/AccountInfoView.vue'
 import BillingView from '../views/BillingView.vue'
@@ -71,6 +72,11 @@ const routes = [
     path: '/profile/addresses',
     name: 'addresses',
     component: AddressView
+  },
+  {
+    path: '/profile/addresses/new',
+    name: 'addresses-new',
+    component: AddressNewView
   },
   {
     path: '/profile/addresses/:id',

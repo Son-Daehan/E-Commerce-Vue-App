@@ -1,8 +1,8 @@
 <template>
   <div class="profile">
-    <nav class="navbar">
+    <nav class="navbar-custom">
       <div id="profileNavbar">
-        <ul id="profileNested">
+        <ul class="list-unstyled" id="profileNavbarNested">
           <li class="nav-item active">
             <a class="nav-link" href="/profile"
               >Account Information <span class="sr-only">(current)</span></a
@@ -21,22 +21,30 @@
       </div>
     </nav>
 
-    <div class="wrapper" id="addressGrid">
-      <div v-for="(address, index) in addresses" :key="index">
-        <div id="addressNestedGrid">
-          <div id="addressStyling">
-            {{ address.street_name }}, <br />{{ address.city }},
-            {{ address.region }} {{ address.postal_code }}
+    <div>
+      <div class="wrapper addressViewCard" id="addressGrid">
+        <div v-for="(address, index) in addresses" :key="index">
+          <div id="addressNestedGrid">
+            <div>Active Shipping Address</div>
+            <div id="addressStyling">
+              {{ address.street_name }}, <br />{{ address.city }},
+              {{ address.region }} {{ address.postal_code }}
+            </div>
+
+            <router-link
+              v-bind:to="{
+                name: 'address-edit',
+                params: { id: address.address_id },
+              }"
+              id="addressEditStyling"
+            >
+              Edit
+            </router-link>
           </div>
-          <div>Active Shipping Address: {{ address.ship_to }}</div>
-          <router-link
-            v-bind:to="{
-              name: 'address-edit',
-              params: { id: address.address_id },
-            }"
-            id="addressEditStyling"
-          >
-            Edit
+        </div>
+        <div v-if="addresses.length == 0">
+          <router-link v-bind:to="{ path: '/profile/addresses/new' }"
+            >Create New Address
           </router-link>
         </div>
       </div>

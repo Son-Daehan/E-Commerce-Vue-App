@@ -8,11 +8,15 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img
-            class="d-block w-100"
-            src="https://cdn.acowebs.com/wp-content/uploads/2019/02/Impact-of-eCommerce-On-Society.png"
-            alt="First slide"
-          />
+          <div v-for="(product, index) in products.slice(0, 2)" :key="index">
+            <div>
+              <img
+                class="carouselImage"
+                v-bind:src="product.image_url"
+                v-bind:alt="first"
+              />
+            </div>
+          </div>
         </div>
         <div class="carousel-item">
           <img
@@ -55,13 +59,21 @@
 </style>
 
 <script>
+import axios from "axios";
+
 export default {
   data: function () {
     return {
       message: "Welcome to Vue.js!",
+      products: [],
     };
   },
-  created: function () {},
+  created: function () {
+    axios.get("/api/products").then((response) => {
+      this.products = response.data;
+      console.log(this.products);
+    });
+  },
   methods: {},
 };
 </script>

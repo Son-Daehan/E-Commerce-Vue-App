@@ -1,8 +1,8 @@
 <template>
   <div class="profile">
-    <nav class="navbar">
+    <nav class="navbar-custom">
       <div id="profileNavbar">
-        <ul id="profileNested">
+        <ul class="list-unstyled" id="profileNavbarNested">
           <li class="nav-item active">
             <a class="nav-link" href="/profile"
               >Account Information <span class="sr-only">(current)</span></a
@@ -23,34 +23,40 @@
 
     <div class="wrapper" id="orderHistoryGrid">
       <div v-for="(order, index) in orders" :key="index">
-        <div id="orderHistoryHeader">
-          <div>ORDER PLACED</div>
-          <div>TOTAL</div>
-          <div>SHIP TO</div>
-          <div></div>
-          <div>ORDER #{{ order.id }}</div>
-        </div>
-        <div id="orderHistoryHeader2">
-          <div>{{ order.date_created }}</div>
-          <div>{{ order.total }}</div>
-          <div></div>
-          <div>View Order Details</div>
-          <div>View Invoice</div>
-        </div>
-        <div id="orderNestedGrid">
-          <div>
-            <div id v-for="(product, index) in order.products" :key="index">
-              <div>{{ product.name }}</div>
-              <div>{{ product.description }}</div>
-              <div>{{ product.price }}</div>
-            </div>
+        <div class="orderHistoryWrapper">
+          <div class="orderHistoryHeader">
+            <div>ORDER PLACED</div>
+            <div>TOTAL</div>
+            <div>SHIP TO</div>
+            <div></div>
+            <div>ORDER #{{ order.id }}</div>
           </div>
-          <div id="orderHistorySupport">
-            <div>Track Package</div>
-            <div>Get Product Support</div>
-            <div>Return or Replace Items</div>
-            <div>Share Gift Receipt</div>
-            <div>Leave Seller Feedback</div>
+          <div id="orderHistoryHeader2">
+            <div>{{ order.date_created }}</div>
+            <div>${{ order.total }}</div>
+            <div></div>
+            <div>View Order Details</div>
+            <div>View Invoice</div>
+          </div>
+          <div id="orderNestedGrid">
+            <div>
+              <div
+                id="orderList"
+                v-for="(product, index) in order.products"
+                :key="index"
+              >
+                <div>{{ product.title }}</div>
+                <div>{{ product.description }}</div>
+                <div>Price: ${{ product.price }}</div>
+              </div>
+            </div>
+            <div id="orderHistorySupport">
+              <div>Track Package</div>
+              <div>Get Product Support</div>
+              <div>Return or Replace Items</div>
+              <div>Share Gift Receipt</div>
+              <div>Leave Seller Feedback</div>
+            </div>
           </div>
         </div>
       </div>

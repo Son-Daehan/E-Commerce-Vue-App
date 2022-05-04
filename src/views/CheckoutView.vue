@@ -4,63 +4,153 @@
       <h1>Checkout</h1>
     </div>
     <div class="wrapper" id="checkoutWholeWrapper">
-      <div v-for="(address, index) in activeAddress" :key="index">
-        <div v-if="address.ship_to != false" class="wrapper" id="firstNested">
-          <div>Shipping Method</div>
-          <div>
-            {{ address.street_name }},
-            <br />
-            {{ address.city }}, {{ address.region }},
-            {{ address.postal_code }}
+      <div class="firstRowWrapper">
+        <div v-for="(address, index) in activeAddress" :key="index">
+          <div
+            v-if="address.ship_to != false"
+            class="wrapper addressCard"
+            id="firstNested"
+          >
+            <div>Shipping Method</div>
+            <div>
+              {{ address.street_name }},
+              <br />
+              {{ address.city }}, {{ address.region }},
+              {{ address.postal_code }}
+            </div>
+            <router-link
+              class="button addressChangeButton"
+              v-bind:to="{ path: '/profile/addresses' }"
+              >Change</router-link
+            >
           </div>
-          <router-link v-bind:to="{ path: '/' }">Change</router-link>
         </div>
-      </div>
-
-      <div class="wrapper" id="secondNested">
-        <div>Payment Method</div>
-        <div>test</div>
-        <div>test</div>
-      </div>
-
-      <div class="wrapper" id="thirdNested">
         <div>
-          <div v-for="(carted, index) in cartedProducts" :key="index">
-            <div id="checkoutThirdNestedFurther">
-              <div>
-                <div>
-                  <router-link
-                    v-bind:to="{
-                      name: 'singleProduct',
-                      params: { id: index + 1 },
-                    }"
-                    >{{ carted.product.name }}</router-link
-                  >
-                </div>
-                <div>Quantity: {{ carted.quantity }}</div>
-                <div>Price:</div>
-                <hr width="100%" />
-              </div>
+          <div class="wrapper billingCard" id="secondNested">
+            <div>
+              <div>Payment Method</div>
+            </div>
+            <div>
+              <div>test</div>
+            </div>
+            <div>
+              <div>test</div>
             </div>
           </div>
         </div>
-        <div id="fourthNested">
-          <div>Order Summary</div>
-          <div
-            v-for="(carted, index) in cartedProducts.slice(0, 1)"
-            v-bind:key="index"
-          >
-            Subtotal: ${{ carted.subtotal }}
+      </div>
+      <div class="wrapper" id="thirdNested">
+        <div class="productOrderCard">
+          <div v-for="(carted, index) in cartedProducts" :key="index">
+            <div id="checkoutThirdNestedFurther">
+              <div>
+                <router-link
+                  class="routerLink"
+                  v-bind:to="{
+                    name: 'singleProduct',
+                    params: { id: carted.product.id },
+                  }"
+                >
+                  <img
+                    v-bind:src="carted.product.image"
+                    id="product-image"
+                    v-bind:alt="carted.product.title"
+                  />
+                </router-link>
+              </div>
+              <div class="checkoutProductCardNested">
+                <div class="productOrderTitle">
+                  <router-link
+                    v-bind:to="{
+                      name: 'singleProduct',
+                      params: { id: carted.product.id },
+                    }"
+                    >{{ carted.product.title }}</router-link
+                  >
+                </div>
+                <div class="productOrderDescription">
+                  {{ carted.product.description }}
+                </div>
+                <div class="productQuantityPrice">
+                  <div>Quantity: {{ carted.quantity }}</div>
+                  <div>
+                    Total Product Price: ${{
+                      carted.product.price * carted.quantity
+                    }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr width="100%" />
           </div>
-          <div>Shipping and Handling: $0.00</div>
-          <div
-            v-for="(carted, index) in cartedProducts.slice(0, 1)"
-            v-bind:key="index"
-          >
-            Total Before Tax: ${{ carted.subtotal }}
+        </div>
+
+        <div class="orderCard">
+          <div id="summaryTitle">Order Summary</div>
+          <div class="orderCardWrapper">
+            <div class="orderCardLeft" id="fourthNested">
+              <div
+                class="summaryDetail"
+                v-for="(carted, index) in cartedProducts.slice(0, 1)"
+                v-bind:key="index"
+              >
+                Subtotal:
+              </div>
+              <div class="summaryDetail">Shipping and Handling:</div>
+              <div
+                class="summaryDetail"
+                v-for="(carted, index) in cartedProducts.slice(0, 1)"
+                v-bind:key="index"
+              >
+                Total Before Tax:
+              </div>
+              <div
+                class="summaryDetail"
+                v-for="(carted, index) in cartedProducts.slice(0, 1)"
+                v-bind:key="index"
+              >
+                Estimated Tax:
+              </div>
+              <div
+                class="summaryTotal"
+                v-for="(carted, index) in cartedProducts.slice(0, 1)"
+                v-bind:key="index"
+              >
+                Order Total:
+              </div>
+            </div>
+            <div class="orderCardRight" id="fourthNested">
+              <div
+                class="summaryDetail"
+                v-for="(carted, index) in cartedProducts.slice(0, 1)"
+                v-bind:key="index"
+              >
+                ${{ carted.subtotal }}
+              </div>
+              <div class="summaryDetail">$0.00</div>
+              <div
+                class="summaryDetail"
+                v-for="(carted, index) in cartedProducts.slice(0, 1)"
+                v-bind:key="index"
+              >
+                ${{ carted.subtotal }}
+              </div>
+              <div
+                class="summaryDetail"
+                v-for="(carted, index) in cartedProducts.slice(0, 1)"
+                v-bind:key="index"
+              >
+                ${{ carted.estimated_tax }}
+              </div>
+              <div
+                class="summaryTotal"
+                v-for="(carted, index) in cartedProducts.slice(0, 1)"
+                v-bind:key="index"
+              >
+                ${{ carted.total_order_price }}
+              </div>
+            </div>
           </div>
-          <div>Estimated Tax: $0.00</div>
-          <div>Order Total: $0.00</div>
           <button
             v-on:click="createOrder()"
             type="button"
@@ -83,6 +173,7 @@ export default {
       addresses: [],
       errors: [],
       order: [],
+      taxes: [],
     };
   },
 
@@ -111,6 +202,10 @@ export default {
       this.addresses = response.data;
       console.log(this.addresses);
     });
+    axios.get("/api/taxes").then((response) => {
+      this.taxes = response.data;
+      console.log(this.taxes);
+    });
   },
   computed: {
     activeAddress: function () {
@@ -119,5 +214,10 @@ export default {
       });
     },
   },
+  // methods: {
+  //   toTwoDecimal: function (number) {
+  //     this.number.toFixed(2);
+  //   },
+  // },
 };
 </script>
