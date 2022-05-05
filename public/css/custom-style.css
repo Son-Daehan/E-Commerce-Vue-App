@@ -41,7 +41,7 @@
 .footerSocial {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	text-align: right;
+	margin: right;
 }
 
 
@@ -68,4 +68,9 @@ html {
 	display: inline-block;
 	font-size: 14px;
 
+}
+
+.imageHome {
+	height: 600px;
+	width: 100%;
 }

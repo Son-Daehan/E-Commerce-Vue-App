@@ -16,9 +16,6 @@
             <li class="nav-item">
               <a class="nav-link" href="/products">Products</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
-            </li>
             <li class="nav-item" v-if="isLoggedIn()">
               <a class="nav-link" href="/profile">Account</a>
             </li>
@@ -51,11 +48,9 @@
     <footer>
       <div class="footer row bg-dark text-light">
         <div class="text-center col-lg-6 offset-lg-3">
-          <h4>Footer</h4>
+          <br />
           <p>
-            Copyright &copy; 2022 &middot; All Rights Reserved &middot;
-            <a href="#">Samuel Son</a>
-          </p>
+            <h4>Samuel Son</h4></p>
         </div>
         <div>
           <div class="container">
